@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import it.prova.materialrest.model.Ruolo;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import it.prova.materialrest.dto.ruolo.RuoloDTO;
 import it.prova.materialrest.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,10 +23,11 @@ public class UserDTO {
 	private String username;
 	private String password;
 	private String confermaPassword;
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataDiNascita;
 	private String nome;
 	private String cognome;
-	private Ruolo ruolo;
+	private RuoloDTO ruolo;
 	
 	public User buildUserModel() {
 		User result = User.builder()
@@ -34,7 +37,7 @@ public class UserDTO {
 				.dataDiNascita(dataDiNascita)
 				.nome(nome)
 				.cognome(cognome)
-				.ruolo(ruolo)
+				.ruolo(ruolo.buildRuoloModelFromDTO())
 				.build();
 		
 		return result;
@@ -48,7 +51,7 @@ public class UserDTO {
 				.dataDiNascita(userModel.getDataDiNascita())
 				.nome(userModel.getNome())
 				.cognome(userModel.getCognome())
-				.ruolo(userModel.getRuolo())
+				.ruolo(RuoloDTO.buildDtoRuoloFromModel(userModel.getRuolo()))
 				.build();
 		
 		return result;
