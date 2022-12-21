@@ -3,6 +3,7 @@ package it.prova.materialrest.service.user;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import it.prova.materialrest.model.User;
@@ -13,6 +14,8 @@ public class UserServiceImpl implements UserService{
 
 	@Autowired
 	private UserRepository repository;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	@Override
 	public List<User> listAllUtenti() {
@@ -36,6 +39,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void inserisciNuovo(User utenteInstance) {
+		utenteInstance.setPassword(passwordEncoder.encode(utenteInstance.getPassword()));
 		repository.save(utenteInstance);
 	}
 

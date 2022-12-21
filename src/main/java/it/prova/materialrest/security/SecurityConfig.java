@@ -44,11 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  				
 				.authorizeHttpRequests()
 				.antMatchers("/**").permitAll()
-//				
-//				.antMatchers("/api/auth/login").permitAll()
+				.antMatchers("/api/auth/login").permitAll()
 //				.antMatchers("/api/utente/userInfo").authenticated()
 //				.antMatchers("/api/utente/**").hasRole("ADMIN")
-//				.antMatchers("/**").hasAnyRole("ADMIN", "SPECIAL_PLAYER", "PLAYER")
+//				.antMatchers("/**").hasAnyRole("ADMIN", "SPECIAL_PLAYER")
 				
 				// .antMatchers("/anonymous*").anonymous()
 				.anyRequest().authenticated()
