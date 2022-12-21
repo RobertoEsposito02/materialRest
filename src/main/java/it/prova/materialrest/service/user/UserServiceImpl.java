@@ -3,10 +3,12 @@ package it.prova.materialrest.service.user;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import it.prova.materialrest.model.User;
 import it.prova.materialrest.repository.user.UserRepository;
 
+@Service
 public class UserServiceImpl implements UserService{
 
 	@Autowired
@@ -64,7 +66,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User cercaPerUsername(String username) {
-		return repository.findByUsername(username);
+		return repository.findByUsername(username).orElse(null);
 	}
 
 }

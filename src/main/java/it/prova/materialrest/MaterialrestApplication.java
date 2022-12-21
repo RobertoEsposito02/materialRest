@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import it.prova.materialrest.model.Ruolo;
 import it.prova.materialrest.model.User;
+import it.prova.materialrest.service.ruolo.RuoloService;
 import it.prova.materialrest.service.user.UserService;
 
 @SpringBootApplication
@@ -17,6 +18,8 @@ public class MaterialrestApplication implements CommandLineRunner{
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private RuoloService ruoloService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(MaterialrestApplication.class, args);
@@ -28,6 +31,8 @@ public class MaterialrestApplication implements CommandLineRunner{
 				.codice(Ruolo.ROLE_ADMIN)
 				.descrizione("admin")
 				.build();
+		
+		ruoloService.inserisciNuovo(adminRole);
 		
 		User admin = User.builder()
 				.id(1L)

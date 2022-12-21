@@ -3,10 +3,12 @@ package it.prova.materialrest.service.ruolo;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import it.prova.materialrest.model.Ruolo;
 import it.prova.materialrest.repository.ruolo.RuoloRepository;
 
+@Service
 public class RuoloServiceImpl implements RuoloService{
 
 	@Autowired

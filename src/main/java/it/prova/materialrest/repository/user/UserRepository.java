@@ -1,5 +1,7 @@
 package it.prova.materialrest.repository.user;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -12,5 +14,5 @@ public interface UserRepository extends CrudRepository<User, Long>{
 	
 	User findByUsernameAndPassword(String username, String password);
 	
-	User findByUsername(String username);
+	Optional<User> findByUsername(String username);
 }
